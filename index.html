@@ -135,7 +135,10 @@
                 Roc-A-Fella Records in the early 2000s, producing singles for several mainstream artists.</p>
               <div>
                 <p class="card-date">
-                  <span id="lastUpdated">1 month</span> ago in <span id="category">entertainment</span>
+                  <span id="time">
+                    <span id="lastUpdated">1 month</span> ago in <span id="category">entertainment</span>
+                  </span>
+                  <span id="thankYou">Thank you for your vote!</span>
                 </p>
                 <div class="card-buttons">
                   <button id="voteUp" class="vote-button vote-button-up">
@@ -144,7 +147,7 @@
                   <button id="voteDown" class="vote-button vote-button-down">
                     <img src="assets/img/thumbs-down.svg" />
                   </button>
-                  <button class="vote-now-button">Vote Now</button>
+                  <button id="voteNow" class="vote-now-button" disabled>Vote Now</button>
                 </div>
               </div>
             </div>
@@ -251,26 +254,30 @@
       const lastUpdatedEl = child.querySelector("#lastUpdated")
       const timeDifference = new Date() - new Date(rule.lastUpdated)
 
-      const seconds = Math.floor(timeDifference / 1000);
-      const minutes = Math.floor(seconds / 60);
-      const hours = Math.floor(minutes / 60);
-      const days = Math.floor(hours / 24);
-      const months = Math.floor(days / 30);
-      const years = Math.floor(months / 12);
+      const seconds = Math.floor(timeDifference / 1000)
+      const minutes = Math.floor(seconds / 60)
+      const hours = Math.floor(minutes / 60)
+      const days = Math.floor(hours / 24)
+      const months = Math.floor(days / 30)
+      const years = Math.floor(months / 12)
 
       if (years > 0) {
-        lastUpdatedEl.innerText = years + (years === 1 ? " year ago" : " years ago");
+        lastUpdatedEl.innerText = years + (years === 1 ? " year ago" : " years ago")
       } else if (months > 0) {
-        lastUpdatedEl.innerText = months + (months === 1 ? " month ago" : " months ago");
+        lastUpdatedEl.innerText = months + (months === 1 ? " month ago" : " months ago")
       } else if (days > 0) {
-        lastUpdatedEl.innerText = days + (days === 1 ? " day ago" : " days ago");
+        lastUpdatedEl.innerText = days + (days === 1 ? " day ago" : " days ago")
       } else if (hours > 0) {
-        lastUpdatedEl.innerText = hours + (hours === 1 ? " hour ago" : " hours ago");
+        lastUpdatedEl.innerText = hours + (hours === 1 ? " hour ago" : " hours ago")
       } else if (minutes > 0) {
-        lastUpdatedEl.innerText = minutes + (minutes === 1 ? " minute ago" : " minutes ago");
+        lastUpdatedEl.innerText = minutes + (minutes === 1 ? " minute ago" : " minutes ago")
       } else {
-        lastUpdatedEl.innerText = seconds + (seconds === 1 ? " second ago" : " seconds ago");
+        lastUpdatedEl.innerText = seconds + (seconds === 1 ? " second ago" : " seconds ago")
       }
+
+      function updateVotes(child, rule) {
+
+      
 
       const positiveEl = child.querySelector("#positive")
       const negativeEl = child.querySelector("#negative")
@@ -300,22 +307,59 @@
       const votesBarDown = child.querySelector("#votesBarDown")
       votesBarUp.style.width = positiveEl.innerText
       votesBarDown.style.width = negativeEl.innerText
+    }
+    updateVotes(child, rule)
 
       const voteButtonUp = child.querySelector("#voteUp")
       const voteButtonDown = child.querySelector("#voteDown")
+      const voteNowButton = child.querySelector("#voteNow")
 
       voteButtonUp.addEventListener("click", () => {
         voteButtonUp.classList.add("vote-button-selected")
         voteButtonDown.classList.remove("vote-button-selected")
+        voteNowButton.disabled = false
       })
 
       voteButtonDown.addEventListener("click", () => {
         voteButtonDown.classList.add("vote-button-selected")
         voteButtonUp.classList.remove("vote-button-selected")
+        voteNowButton.disabled = false
       })
 
-      // const a = "Thank you for your vote!"
-      // Vote Again
+      voteNowButton.addEventListener("click", () => {
+        const timeEl = child.querySelector("#time")
+        const thankYouEl = child.querySelector("#thankYou")
+
+        if (voteNowButton.classList.contains("clicked")) {
+          timeEl.style.display = "inline"
+          thankYouEl.style.display = "none"
+          voteNowButton.classList.remove("clicked")
+          voteNowButton.innerText = "Vote Now"
+          voteButtonUp.disabled = false
+          voteButtonDown.disabled = false
+          voteButtonUp.classList.remove("vote-button-selected")
+          voteButtonDown.classList.remove("vote-button-selected")
+        } else {
+          timeEl.style.display = "none"
+          thankYouEl.style.display = "inline"
+          voteNowButton.classList.add("clicked")
+          voteNowButton.innerText = "Vote Again"
+          voteButtonUp.disabled = true
+          voteButtonDown.disabled = true
+          // persist new info
+          const upvote = voteButtonUp.classList.contains("vote-button-selected")
+          const downvote = voteButtonDown.classList.contains("vote-button-selected")
+          if (upvote) {
+            rule.votes.positive++
+            localStorage.setItem(rulingsKey, JSON.stringify(rulings))
+            updateVotes(child, rule)
+          } else if (downvote) {
+            rule.votes.negative++
+            localStorage.setItem(rulingsKey, JSON.stringify(rulings))
+            updateVotes(child, rule)
+          }
+        }
+      })
 
       cardsEl.appendChild(child)
     })
