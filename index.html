@@ -109,7 +109,6 @@
     </aside>
     <main role="main">
       <!-- Start: Implementation -->
-
       <div class="menu">
         <h2>Previous Rulings</h2>
 
@@ -120,24 +119,29 @@
       </div>
 
       <div class="cards list">
-        <div class="card list">
+        <div class="card">
           <div class="card-bg">
             <div class="card-title">
-              <div class="vote-button list vote-button-up">
-                <img src="assets/img/thumbs-up.svg" />
+              <div id="overallVotes" class="vote-button vote-button-up">
+                <img src="assets/img/thumbs-down.svg" />
               </div>
-              Kanye West
+              <span id="name">
+                Kanye West
+              </span>
             </div>
             <div class="content">
-              <p class="card-description">Born in Atlanta and raised in Chicago, West was first known as a producer for
+              <p id="description" class="card-description">Born in Atlanta and raised in Chicago, West was first known
+                as a producer for
                 Roc-A-Fella Records in the early 2000s, producing singles for several mainstream artists.</p>
               <div>
-                <p class="card-date">1 month ago in <span>entertainment</span></p>
+                <p class="card-date">
+                  <span id="lastUpdated">1 month</span> ago in <span id="category">entertainment</span>
+                </p>
                 <div class="card-buttons">
-                  <button class="vote-button vote-button-up">
+                  <button id="voteUp" class="vote-button vote-button-up">
                     <img src="assets/img/thumbs-up.svg" />
                   </button>
-                  <button class="vote-button vote-button-down">
+                  <button id="voteDown" class="vote-button vote-button-down">
                     <img src="assets/img/thumbs-down.svg" />
                   </button>
                   <button class="vote-now-button">Vote Now</button>
@@ -146,129 +150,12 @@
             </div>
             <div class="votes-bar-container">
               <div class="votes-bar">
-                <span class="vote-button-up votes-bar-up">
+                <span id="votesBarUp" class="vote-button-up votes-bar-up">
                   <img src="assets/img/thumbs-up.svg" />
-                  <span>25%</span>
+                  <span id="positive">25%</span>
                 </span>
-                <span class="vote-button-down votes-bar-down">
-                  <span>75%</span>
-                  <img src="assets/img/thumbs-down.svg" />
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card list">
-          <div class="card-bg">
-            <div class="card-title">
-              <div class="vote-button list vote-button-up">
-                <img src="assets/img/thumbs-up.svg" />
-              </div>
-              Kanye West
-            </div>
-            <div class="content">
-              <p class="card-description">Born in Atlanta and raised in Chicago, West was first known as a producer for
-                Roc-A-Fella Records in the early 2000s, producing singles for several mainstream artists.</p>
-              <div>
-                <p class="card-date">1 month ago in <span>entertainment</span></p>
-                <div class="card-buttons">
-                  <button class="vote-button vote-button-up">
-                    <img src="assets/img/thumbs-up.svg" />
-                  </button>
-                  <button class="vote-button vote-button-down">
-                    <img src="assets/img/thumbs-down.svg" />
-                  </button>
-                  <button class="vote-now-button">Vote Now</button>
-                </div>
-              </div>
-            </div>
-            <div class="votes-bar-container">
-              <div class="votes-bar">
-                <span class="vote-button-up votes-bar-up">
-                  <img src="assets/img/thumbs-up.svg" />
-                  <span>25%</span>
-                </span>
-                <span class="vote-button-down votes-bar-down">
-                  <span>75%</span>
-                  <img src="assets/img/thumbs-down.svg" />
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card list">
-          <div class="card-bg">
-            <div class="card-title">
-              <div class="vote-button list vote-button-up">
-                <img src="assets/img/thumbs-up.svg" />
-              </div>
-              Kanye West
-            </div>
-            <div class="content">
-              <p class="card-description">Born in Atlanta and raised in Chicago, West was first known as a producer for
-                Roc-A-Fella Records in the early 2000s, producing singles for several mainstream artists.</p>
-              <div>
-                <p class="card-date">1 month ago in <span>entertainment</span></p>
-                <div class="card-buttons">
-                  <button class="vote-button vote-button-up">
-                    <img src="assets/img/thumbs-up.svg" />
-                  </button>
-                  <button class="vote-button vote-button-down">
-                    <img src="assets/img/thumbs-down.svg" />
-                  </button>
-                  <button class="vote-now-button">Vote Now</button>
-                </div>
-              </div>
-            </div>
-            <div class="votes-bar-container">
-              <div class="votes-bar">
-                <span class="vote-button-up votes-bar-up">
-                  <img src="assets/img/thumbs-up.svg" />
-                  <span>25%</span>
-                </span>
-                <span class="vote-button-down votes-bar-down">
-                  <span>75%</span>
-                  <img src="assets/img/thumbs-down.svg" />
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card list">
-          <div class="card-bg">
-            <div class="card-title">
-              <div class="vote-button list vote-button-up">
-                <img src="assets/img/thumbs-up.svg" />
-              </div>
-              Kanye West
-            </div>
-            <div class="content">
-              <p class="card-description">Born in Atlanta and raised in Chicago, West was first known as a producer for
-                Roc-A-Fella Records in the early 2000s, producing singles for several mainstream artists.</p>
-              <div>
-                <p class="card-date">1 month ago in <span>entertainment</span></p>
-                <div class="card-buttons">
-                  <button class="vote-button vote-button-up">
-                    <img src="assets/img/thumbs-up.svg" />
-                  </button>
-                  <button class="vote-button vote-button-down">
-                    <img src="assets/img/thumbs-down.svg" />
-                  </button>
-                  <button class="vote-now-button">Vote Now</button>
-                </div>
-              </div>
-            </div>
-            <div class="votes-bar-container">
-              <div class="votes-bar">
-                <span class="vote-button-up votes-bar-up">
-                  <img src="assets/img/thumbs-up.svg" />
-                  <span>25%</span>
-                </span>
-                <span class="vote-button-down votes-bar-down">
-                  <span>75%</span>
+                <span id="votesBarDown" class="vote-button-down votes-bar-down">
+                  <span id="negative">75%</span>
                   <img src="assets/img/thumbs-down.svg" />
                 </span>
               </div>
@@ -332,5 +219,128 @@
     </footer>
   </div>
 </body>
+
+<script type="module">
+  const selectDisplayEl = document.querySelector(".select-display")
+  selectDisplayEl.addEventListener("change", (e) => {
+    // const displayType = e.target.value
+    cardsEl.classList.toggle("list")
+    cardsEl.classList.toggle("grid")
+  })
+
+  const cardsEl = document.querySelector(".cards")
+  const template = cardsEl.children[0].cloneNode(true)
+  cardsEl.replaceChildren()
+
+  function listCards(rulings) {
+    rulings.forEach((rule) => {
+      const child = template.cloneNode(true)
+      console.log(rule)
+
+      child.style.backgroundImage = `url("/assets/img/${rule.picture}")`
+
+      const nameEl = child.querySelector("#name")
+      nameEl.innerText = rule.name
+
+      const descriptionEl = child.querySelector("#description")
+      descriptionEl.innerText = rule.description
+
+      const categoryEl = child.querySelector("#category")
+      categoryEl.innerText = rule.category
+
+      const lastUpdatedEl = child.querySelector("#lastUpdated")
+      const timeDifference = new Date() - new Date(rule.lastUpdated)
+
+      const seconds = Math.floor(timeDifference / 1000);
+      const minutes = Math.floor(seconds / 60);
+      const hours = Math.floor(minutes / 60);
+      const days = Math.floor(hours / 24);
+      const months = Math.floor(days / 30);
+      const years = Math.floor(months / 12);
+
+      if (years > 0) {
+        lastUpdatedEl.innerText = years + (years === 1 ? " year ago" : " years ago");
+      } else if (months > 0) {
+        lastUpdatedEl.innerText = months + (months === 1 ? " month ago" : " months ago");
+      } else if (days > 0) {
+        lastUpdatedEl.innerText = days + (days === 1 ? " day ago" : " days ago");
+      } else if (hours > 0) {
+        lastUpdatedEl.innerText = hours + (hours === 1 ? " hour ago" : " hours ago");
+      } else if (minutes > 0) {
+        lastUpdatedEl.innerText = minutes + (minutes === 1 ? " minute ago" : " minutes ago");
+      } else {
+        lastUpdatedEl.innerText = seconds + (seconds === 1 ? " second ago" : " seconds ago");
+      }
+
+      const positiveEl = child.querySelector("#positive")
+      const negativeEl = child.querySelector("#negative")
+      const { positive, negative } = rule.votes
+      const total = positive + negative
+
+      positiveEl.innerText = Math.round((positive / total) * 100) + "%"
+      negativeEl.innerText = Math.round((negative / total) * 100) + "%"
+
+      const overallVotesEl = child.querySelector("#overallVotes")
+      overallVotesEl.replaceChildren()
+
+      const img = document.createElement("img")
+      const overallVotesImgSrc = positive >= negative ? "up" : "down"
+      img.src = `assets/img/thumbs-${overallVotesImgSrc}.svg`
+      overallVotesEl.appendChild(img)
+
+      if (positive >= negative) {
+        overallVotesEl.classList.add("vote-button-up")
+        overallVotesEl.classList.remove("vote-button-down")
+      } else {
+        overallVotesEl.classList.add("vote-button-down")
+        overallVotesEl.classList.remove("vote-button-up")
+      }
+
+      const votesBarUp = child.querySelector("#votesBarUp")
+      const votesBarDown = child.querySelector("#votesBarDown")
+      votesBarUp.style.width = positiveEl.innerText
+      votesBarDown.style.width = negativeEl.innerText
+
+      const voteButtonUp = child.querySelector("#voteUp")
+      const voteButtonDown = child.querySelector("#voteDown")
+
+      voteButtonUp.addEventListener("click", () => {
+        voteButtonUp.classList.add("vote-button-selected")
+        voteButtonDown.classList.remove("vote-button-selected")
+      })
+
+      voteButtonDown.addEventListener("click", () => {
+        voteButtonDown.classList.add("vote-button-selected")
+        voteButtonUp.classList.remove("vote-button-selected")
+      })
+
+      // const a = "Thank you for your vote!"
+      // Vote Again
+
+      cardsEl.appendChild(child)
+    })
+
+  }
+
+  const rulingsKey = "rulings"
+  let rulingsItem = localStorage.getItem(rulingsKey)
+
+  if (rulingsItem == null) {
+    fetch("./assets/data.json")
+      .then(response => response.json())
+      .then(json => {
+        const rulings = json.data
+        localStorage.setItem(rulingsKey, JSON.stringify(rulings))
+
+        listCards(rulings)
+      })
+      .catch(error => {
+        console.error("Error loading JSON file: ", error)
+      })
+  } else {
+    const rulings = JSON.parse(rulingsItem)
+    listCards(rulings)
+  }
+</script>
 
 </html>
