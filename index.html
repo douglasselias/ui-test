@@ -243,7 +243,7 @@
       child.style.backgroundImage = `url("/assets/img/${rule.picture}")`
 
       const nameEl = child.querySelector("#name")
-      nameEl.innerText = rule.name
+      nameEl.innerText = rule.name.length > 21 ? rule.name.substring(0, 21) + "..." : rule.name
 
       const descriptionEl = child.querySelector("#description")
       descriptionEl.innerText = rule.description
@@ -276,39 +276,36 @@
       }
 
       function updateVotes(child, rule) {
+        const positiveEl = child.querySelector("#positive")
+        const negativeEl = child.querySelector("#negative")
+        const { positive, negative } = rule.votes
+        const total = positive + negative
 
-      
+        positiveEl.innerText = ((positive / total) * 100).toFixed(1) + "%"
+        negativeEl.innerText = ((negative / total) * 100).toFixed(1) + "%"
 
-      const positiveEl = child.querySelector("#positive")
-      const negativeEl = child.querySelector("#negative")
-      const { positive, negative } = rule.votes
-      const total = positive + negative
+        const overallVotesEl = child.querySelector("#overallVotes")
+        overallVotesEl.replaceChildren()
 
-      positiveEl.innerText = Math.round((positive / total) * 100) + "%"
-      negativeEl.innerText = Math.round((negative / total) * 100) + "%"
+        const img = document.createElement("img")
+        const overallVotesImgSrc = positive >= negative ? "up" : "down"
+        img.src = `assets/img/thumbs-${overallVotesImgSrc}.svg`
+        overallVotesEl.appendChild(img)
 
-      const overallVotesEl = child.querySelector("#overallVotes")
-      overallVotesEl.replaceChildren()
+        if (positive >= negative) {
+          overallVotesEl.classList.add("vote-button-up")
+          overallVotesEl.classList.remove("vote-button-down")
+        } else {
+          overallVotesEl.classList.add("vote-button-down")
+          overallVotesEl.classList.remove("vote-button-up")
+        }
 
-      const img = document.createElement("img")
-      const overallVotesImgSrc = positive >= negative ? "up" : "down"
-      img.src = `assets/img/thumbs-${overallVotesImgSrc}.svg`
-      overallVotesEl.appendChild(img)
-
-      if (positive >= negative) {
-        overallVotesEl.classList.add("vote-button-up")
-        overallVotesEl.classList.remove("vote-button-down")
-      } else {
-        overallVotesEl.classList.add("vote-button-down")
-        overallVotesEl.classList.remove("vote-button-up")
+        const votesBarUp = child.querySelector("#votesBarUp")
+        const votesBarDown = child.querySelector("#votesBarDown")
+        votesBarUp.style.width = positiveEl.innerText
+        votesBarDown.style.width = negativeEl.innerText
       }
-
-      const votesBarUp = child.querySelector("#votesBarUp")
-      const votesBarDown = child.querySelector("#votesBarDown")
-      votesBarUp.style.width = positiveEl.innerText
-      votesBarDown.style.width = negativeEl.innerText
-    }
-    updateVotes(child, rule)
+      updateVotes(child, rule)
 
       const voteButtonUp = child.querySelector("#voteUp")
       const voteButtonDown = child.querySelector("#voteDown")
@@ -346,7 +343,7 @@
           voteNowButton.innerText = "Vote Again"
           voteButtonUp.disabled = true
           voteButtonDown.disabled = true
-          // persist new info
+
           const upvote = voteButtonUp.classList.contains("vote-button-selected")
           const downvote = voteButtonDown.classList.contains("vote-button-selected")
           if (upvote) {
