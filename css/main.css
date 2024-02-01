@@ -932,8 +932,6 @@ main h2 {
   height: 16px;
 }
 
-.votes-bar-container {}
-
 .votes-bar {
   display: flex;
   justify-content: space-between;

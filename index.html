@@ -151,7 +151,7 @@
                 </div>
               </div>
             </div>
-            <div class="votes-bar-container">
+            <div>
               <div class="votes-bar">
                 <span id="votesBarUp" class="vote-button-up votes-bar-up">
                   <img src="assets/img/thumbs-up.svg" />
@@ -226,7 +226,6 @@
 <script type="module">
   const selectDisplayEl = document.querySelector(".select-display")
   selectDisplayEl.addEventListener("change", (e) => {
-    // const displayType = e.target.value
     cardsEl.classList.toggle("list")
     cardsEl.classList.toggle("grid")
   })
@@ -235,10 +234,29 @@
   const template = cardsEl.children[0].cloneNode(true)
   cardsEl.replaceChildren()
 
+  const rulingsKey = "rulings"
+  let rulingsItem = localStorage.getItem(rulingsKey)
+
+  if (rulingsItem == null) {
+    fetch("./assets/data.json")
+      .then(response => response.json())
+      .then(json => {
+        const rulings = json.data
+        localStorage.setItem(rulingsKey, JSON.stringify(rulings))
+
+        listCards(rulings)
+      })
+      .catch(error => {
+        console.error("Error loading JSON file: ", error)
+      })
+  } else {
+    const rulings = JSON.parse(rulingsItem)
+    listCards(rulings)
+  }
+
   function listCards(rulings) {
     rulings.forEach((rule) => {
       const child = template.cloneNode(true)
-      console.log(rule)
 
       child.style.backgroundImage = `url("/assets/img/${rule.picture}")`
 
@@ -332,6 +350,7 @@
           thankYouEl.style.display = "none"
           voteNowButton.classList.remove("clicked")
           voteNowButton.innerText = "Vote Now"
+          voteNowButton.disabled = true
           voteButtonUp.disabled = false
           voteButtonDown.disabled = false
           voteButtonUp.classList.remove("vote-button-selected")
@@ -360,27 +379,6 @@
 
       cardsEl.appendChild(child)
     })
-
-  }
-
-  const rulingsKey = "rulings"
-  let rulingsItem = localStorage.getItem(rulingsKey)
-
-  if (rulingsItem == null) {
-    fetch("./assets/data.json")
-      .then(response => response.json())
-      .then(json => {
-        const rulings = json.data
-        localStorage.setItem(rulingsKey, JSON.stringify(rulings))
-
-        listCards(rulings)
-      })
-      .catch(error => {
-        console.error("Error loading JSON file: ", error)
-      })
-  } else {
-    const rulings = JSON.parse(rulingsItem)
-    listCards(rulings)
   }
 </script>
 
