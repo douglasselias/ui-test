@@ -1,5 +1,3 @@
-## Zemoga Test
-
 ### Running the server
 
 Install the [Go compiler](https://go.dev/dl/)
@@ -22,6 +20,3 @@ Install [Node.js runtime](https://nodejs.org/en/download/), then run `npm instal
    - `data.json` => sample data for populating the page
 - `css/main.css` => all styles for `index.html` page
 - `index.html` => all html and javascript code for the application
-
-
-
