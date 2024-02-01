@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Zemoga Front End Development - Candidate Test v2.1",
   "main": "main.test.js",
+  "engines": {
+    "node": ">=20.11.0",
+    "npm": ">=10.2.4"
+  },
   "scripts": {
     "test": "playwright test",
     "gen": "playwright codegen"
